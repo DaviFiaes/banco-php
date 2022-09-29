@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+    body{
+      background: linear-gradient(320deg, blue,white);
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    
+    }
+    .caixaDeFundo{
+      background: black;
+      color: whitesmoke;
+      padding: 20px;
+      border-radius: 20px;
+    }
+    .caixaDeFundo input [type= "submit"]{
+      background: white;
+      color: black;
+      font-weight: 500;
+      border-radius: 5px;
+      padding: 2px 5px;
+      box-shadow: 10px 25px 10px white;
+      outline: none;
+      display: block;
+      margin: auto;
+      cursor: pointer;
+    }
+
+    .resultado{
+      margin: 10px auto;
+      font: weight 500px; 
+      font-family: 'Courier New', Courier, monospace;
+      color: white;
+    }
+
+  </style>
+
+</head>
+<body>
+    <div class="caixaDeFundo">
+
+    <div class="resultadoBaixo">
+
+<?php
+if(isset($_POST["submit"])){
+
+  $altura = $_POST["altura"];
+  $peso = $_POST["peso"];
+
+}
+$imc = $peso/($altura*$altura);
+echo "seu IMC é:" .round($imc,2); 
+
+?>
+</div>
+
+<br><br><br>
+    
+      <form action="index.php" method="POST">
+
+        <h1>VENHA SABER SE VC É DOENTE!</h1>
+
+        <br><br><br><br>
+
+        <label for= "peso"> SEU PESO: </label> 
+        <input id="peso" name="peso" type= "text">
+       
+          <label for= "altura"> SUA ALTURA: </label>
+          <input id="altura"  name="altura" type= "text">
+            <br><br><br><br><br>
+
+          <input type="submit" name="submit" value="CAUCULAR">
+          <br><br><br><br>
+          <?php
+          
+          if($imc<=18.5){
+            echo "VOCÊ TA MORRENDO SEU PUTO(anorexicia)";
+          }
+
+          elseif($imc<=24.99){
+            echo "VC TA DE QUEBRADA(normal)";
+          }
+
+          elseif($imc<=29.99){
+            echo "VC TA DE QUEBRADA(normal)";
+          }
+
+          elseif($imc>=30.0){
+            echo "VC TA DE QUEBRADA(normal)";
+          }
+
+          ?>
+
+        </div>
+      </form>
+   </body>
+</html>
